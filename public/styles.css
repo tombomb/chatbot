@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f6f9;
+}
+
+#chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid #e1e4e8;
+    background-color: #fff;
+}
+
+#chat-history {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+#message-form {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-top: 1px solid #e1e4e8;
+    background-color: #f4f6f9;
+}
+
+#user-input {
+    flex-grow: 1;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #e1e4e8;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.user-message, .bot-message {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+}
+
+.user-message {
+    background-color: #e1e4e8;
+    align-self: flex-end;
+}
+
+.bot-message {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.bot-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.download-button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.download-button:hover {
+    background-color: #0056b3;
+}

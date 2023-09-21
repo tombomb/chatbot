@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with ChatGPT</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="chat-container">
+        <div id="chat-history"></div>
+        <form id="message-form" onsubmit="sendMessage(); return false;">
+            <input type="text" id="user-input" placeholder="Type your message...">
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <audio id="audio-player"></audio>
+    <script src="script.js"></script>
+</body>
+</html>
