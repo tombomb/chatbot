@@ -1,3 +1,14 @@
+/* CSS Variables */
+:root {
+    --primary-bg-color: #007bff;
+    --secondary-bg-color: #e1e4e8;
+    --primary-text-color: #fff;
+    --secondary-text-color: #000;
+    --fade-bg-color: rgba(244, 246, 249, 1);
+    --transition-speed: 0.3s;
+}
+
+/* Global Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -5,32 +16,162 @@ body {
     background-color: #f4f6f9;
 }
 
+/* Parent container styles */
+#app-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar Styles */
+#sidebar {
+    width: 250px;
+    height: 100%;
+    border-right: 1px solid #e1e4e8;
+    background-color: #f4f6f9;
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
+#new-chat-button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #e1e4e8;
+    background-color: var(--primary-bg-color);
+    color: var(--primary-text-color);
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+}
+
+#new-chat-button:hover {
+    background-color: #0056b3;
+}
+
+#chat-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#chat-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #e1e4e8;
+    cursor: pointer;
+    position: relative;
+}
+
+#chat-list li:hover {
+    background-color: #e1e4e8;
+}
+
+.conversation-name {
+    flex-grow: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    position: relative;
+}
+
+.conversation-name::after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 90px;
+    height: 100%;
+    background: linear-gradient(to right, rgba(244, 246, 249, 0), rgba(244, 246, 249, 1));
+}
+
+.edit-icon {
+    position: absolute;
+    right: 10px;
+    z-index: 2;
+}
+
+/* Chat Container Styles */
 #chat-container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    max-width: 600px;
-    margin: 0 auto;
-    border: 1px solid #e1e4e8;
-    background-color: #fff;
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-bottom: 60px; /* This is to ensure the last message is visible above the floating input */
 }
 
 #chat-history {
-    flex-grow: 1;
+    display: flex;
+    flex-direction: column-reverse;
+    flex-grow: 1; /* This allows the chat history to grow and occupy the available space */
+    flex-shrink: 1; /* This allows the chat history to shrink if necessary */
     padding: 20px;
     overflow-y: auto;
 }
 
-#message-form {
+/* Message Styles */
+.message {
+    flex-grow: 1;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    transition: background-color var(--transition-speed);
+}
+
+.user-message {
+    /* flex-grow: 1; Remove this line */
+    background-color: #e1e4e8;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+}
+
+.assistant-message {
+    /* flex-grow: 1; Remove this line */
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+}
+
+.system-message {
+    /* flex-grow: 1; Remove this line */
+    background-color: #f7dc6f;
+    color: #000;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+}
+
+.bot-container {
     display: flex;
-    justify-content: space-between;
-    padding: 10px 20px;
-    border-top: 1px solid #e1e4e8;
+    align-items: center; /* Vertically center-align the message and the download button */
+}
+
+.bot-container .assistant-message {
+    flex-grow: 1; /* Allow the message to grow and take up available space */
+    margin-right: 10px; /* Add some space between the message and the download button */
+}
+
+.download-button {
+    /* Any additional styles for the download button if needed */
+}
+
+/* Form Styles */
+#message-form {
+    position: fixed;
+    bottom: 0; /* Ensure the form is at the bottom */
+    left: 250px;
+    width: calc(100% - 250px);
     background-color: #f4f6f9;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
 }
 
 #user-input {
     flex-grow: 1;
+    width: 80%;
     padding: 10px;
     margin-right: 10px;
     border: 1px solid #e1e4e8;
@@ -41,49 +182,28 @@ button {
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: var(--primary-bg-color);
+    color: var(--primary-text-color);
     cursor: pointer;
+    transition: background-color var(--transition-speed);
 }
 
 button:hover {
     background-color: #0056b3;
 }
 
-.user-message, .bot-message {
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 8px;
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    /* Styles for smaller screens go here */
 }
 
-.user-message {
-    background-color: #e1e4e8;
-    align-self: flex-end;
-}
-
-.bot-message {
-    background-color: #007bff;
-    color: #fff;
-}
-
-.bot-container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    width: 100%;
-}
-
-.download-button {
-    margin-left: 10px;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-    font-size: 12px;
-}
-
-.download-button:hover {
-    background-color: #0056b3;
+/* Misc Styles */
+.visually-hidden {
+    position: absolute !important;
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0 !important;
+    border: 0 !important;
+    height: 1px !important;
+    width: 1px !important;
+    overflow: hidden;
 }
